@@ -945,6 +945,7 @@ install_desktop_environment(){
               package_install "lightdm lightdm-gtk3-greeter"
             fi
             system_ctl enable lightdm
+            sed -i -e 's/#greeter-session=lightdm-gtk3-greeter/greeter-session=lightdm-gtk3-greeter/g' /etc/lightdm/lightdm.conf
             ;;
           4)
             package_install "ssdm"
