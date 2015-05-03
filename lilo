@@ -941,11 +941,12 @@ install_desktop_environment(){
           3)
             if [[ ${KDE} -eq 1 ]]; then
               package_install "lightdm lightdm-kde-greeter"
+              sed -i -e 's/#greeter-session=lightdm-kde-greeter/greeter-session=lightdm-kde-greeter/g' /etc/lightdm/lightdm.conf
             else
               package_install "lightdm lightdm-gtk3-greeter"
+              sed -i -e 's/#greeter-session=lightdm-gtk3-greeter/greeter-session=lightdm-gtk3-greeter/g' /etc/lightdm/lightdm.conf
             fi
             system_ctl enable lightdm
-            sed -i -e 's/#greeter-session=lightdm-gtk3-greeter/greeter-session=lightdm-gtk3-greeter/g' /etc/lightdm/lightdm.conf
             ;;
           4)
             package_install "ssdm"
